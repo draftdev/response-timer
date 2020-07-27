@@ -1,5 +1,5 @@
 # Response Timer
-A simple script and Docker image to get the response time of a website based on [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192).
+A Docker image to get the response time of a website based on [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192).
 
 ## Usage
 - Build the Dockerfile: `docker build -t karllhughes/response-timer .`
