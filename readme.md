@@ -56,6 +56,8 @@ docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts -H 'Content-Type:
 
 ### DigitalOcean
 
+To run this image on a DigitalOcean droplet, you can use the [Docker marketplace image](https://marketplace.digitalocean.com/apps/docker). 
+
 ![hosting-do.png]
 
 - Log in and [create a new Droplet](https://cloud.digitalocean.com/droplets/new).
@@ -84,10 +86,10 @@ ssh root@<YOUR_DROPLET_IP> "docker run --rm draftdev/rt jsonplaceholder.typicode
 
 Repeat the droplet creation process in each region you want to test your app from, or [migrate the droplet using a snapshot](https://www.digitalocean.com/docs/images/snapshots/how-to/migrate-droplets/).
 
-### Fly.io
+### Linode
 Coming soon.
 
-### AWS Lambda
+### AWS
 Coming soon.
 
 ## Contributing
