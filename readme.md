@@ -2,22 +2,26 @@
 A Docker image to help you get a nicely formatted result for the response time of a website or API.
 
 ## Why?
-I write a lot of technical blog posts, and I often want to compare the response time of various hosting providers from different locations around the world. I used to use [Pingdom](https://tools.pingdom.com/) for these tests, but it doesn't support request bodies, headers, or different methods (POST, PUT, etc.).
+[I write a lot of technical blog posts](https://www.karllhughes.com/writing/), and I often want to compare the response times of different hosting providers from various locations around the world. I sometimes use [Pingdom](https://tools.pingdom.com/) for these tests, but it doesn't support request bodies, headers, or different methods (POST, PUT, etc.). Plus, they throttle your usage, so it's not great if you want to run a lot of tests.
 
-I found [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192), but I wanted to simplify it and put it in a ready-to-deploy Docker image so I could quickly run it on any host that will run a Docker container.
+After searching for how I could accomplish this with curl, I found [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192). This was good, but I wanted to simplify it and put it in a ready-to-deploy Docker image so I could quickly run it on any host that will run a container.
 
-## Usage
+The goal of this project is to be able to quickly run the script from several nodes (and my local machine) to determine how quickly the API or website will respond from each of them.
+
+![This response timer can be used to test a web app from multiple locations](illustration-1.png)
+
+## Local Usage
 
 Pull the latest version from Docker Hub: 
 
 ```bash
-docker pull xxx/rt
+docker pull draftdev/rt
 ```
 
 A simple GET request:
 
 ```bash
-docker run --rm rt jsonplaceholder.typicode.com/posts
+docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts
 # Response
           final_url:  http://jsonplaceholder.typicode.com/posts
       response_code:  200s
@@ -34,7 +38,7 @@ docker run --rm rt jsonplaceholder.typicode.com/posts
 A more complex POST request (you can use [any of the args that curl supports](https://curl.haxx.se/docs/manpage.html)): 
 
 ```bash
-docker run --rm rt jsonplaceholder.typicode.com/posts -H 'Content-Type: application/json' -d '{"title": "Another great post"}' -X POST
+docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts -H 'Content-Type: application/json' -d '{"title": "Another great post"}' -X POST
 # Response
           final_url:  http://jsonplaceholder.typicode.com/posts
       response_code:  201s
@@ -50,8 +54,17 @@ docker run --rm rt jsonplaceholder.typicode.com/posts -H 'Content-Type: applicat
 
 ## Deploying to Various Hosting Providers
 
+### DigitalOcean
+Coming soon.
+
+### AWS Lambda
+Coming soon.
+
+### Fly.io
+Coming soon.
+
 ## Contributing
-Improvements are welcome, but please use the [Issues]() to discuss them first. This is a simple script, so I don't envision bundling much more functionality into it.
+Improvements are welcome, but please use the [Issues](https://github.com/draftdev/response-timer/issues) to discuss them first. This is a simple script, so I don't envision bundling much more functionality into it.
 
 ## License
 
