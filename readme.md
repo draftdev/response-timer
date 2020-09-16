@@ -58,10 +58,10 @@ docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts -H 'Content-Type:
 
 To run this image on a DigitalOcean droplet, you can use the [Docker marketplace image](https://marketplace.digitalocean.com/apps/docker). 
 
-![hosting-do.png]
+![Setting up a DigitalOcean droplet with the Docker marketplace image](hosting-do.png)
 
 - Log in and [create a new Droplet](https://cloud.digitalocean.com/droplets/new).
-- Select the Docker Marketplace image
+- Select the Docker marketplace image
 - Select the smallest ($5/mo) droplet
 - Select a single region
 - Add your SSH key
