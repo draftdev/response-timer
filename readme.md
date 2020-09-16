@@ -1,10 +1,10 @@
 # Response Timer
-A Docker image to help you get a nicely formatted result for the response time of a website or API.
+A Docker image to help you get a nicely formatted result for the response time of a website or API. ⏲
 
 ## Why?
 [I write a lot of technical blog posts](https://www.karllhughes.com/writing/), and I often want to compare the response times of different hosting providers from various locations around the world. I sometimes use [Pingdom](https://tools.pingdom.com/) for these tests, but it doesn't support request bodies, headers, or different methods (POST, PUT, etc.). Plus, they throttle your usage, so it's not great if you want to run a lot of tests.
 
-After searching for how I could accomplish this with curl, I found [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192). This was good, but I wanted to simplify it and put it in a ready-to-deploy Docker image so I could quickly run it on any host that will run a container.
+After searching for how I could accomplish this with curl, I found [this answer on Stack Overflow](https://stackoverflow.com/a/22625150/977192). This was good, but I wanted to simplify it and put it in a ready-to-deploy Docker image so I could quickly run it on any host that will run a container. 🐳
 
 The goal of this project is to be able to quickly run the script from several nodes (and my local machine) to determine how quickly the API or website will respond from each of them.
 
@@ -55,12 +55,39 @@ docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts -H 'Content-Type:
 ## Deploying to Various Hosting Providers
 
 ### DigitalOcean
+
+![hosting-do.png]
+
+- Log in and [create a new Droplet](https://cloud.digitalocean.com/droplets/new).
+- Select the Docker Marketplace image
+- Select the smallest ($5/mo) droplet
+- Select a single region
+- Add your SSH key
+- Hit deploy
+
+Once deployed, you can run this container via SSH:
+
+```bash
+ssh root@<YOUR_DROPLET_IP> "docker run --rm draftdev/rt jsonplaceholder.typicode.com/posts -H 'Content-Type: application/json' -d '{\"title\": \"Another great post\"}' -X POST"
+# Response
+          final_url:  http://jsonplaceholder.typicode.com/posts
+      response_code:  201s
+    time_namelookup:  0.001051s
+       time_connect:  0.004071s
+    time_appconnect:  0.000000s
+   time_pretransfer:  0.004155s
+      time_redirect:  0.000000s
+ time_starttransfer:  0.046294s
+                    ----------
+         time_total:  0.046395s
+```
+
+Repeat the droplet creation process in each region you want to test your app from, or [migrate the droplet using a snapshot](https://www.digitalocean.com/docs/images/snapshots/how-to/migrate-droplets/).
+
+### Fly.io
 Coming soon.
 
 ### AWS Lambda
-Coming soon.
-
-### Fly.io
 Coming soon.
 
 ## Contributing
