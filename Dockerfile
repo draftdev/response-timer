@@ -1,6 +1,4 @@
-from curlimages/curl:latest
-ENV METHOD GET
-ENV URL "http://www.example.com"
-ENV BODY "{}"
+FROM curlimages/curl:latest
 COPY curl-format.txt ./curl-format.txt
-CMD ["sh", "-c", "curl -L -w @curl-format.txt -o /dev/null -H 'Content-Type: application/json' -d ${BODY} -s -X ${METHOD} ${URL}"]
+COPY rt.sh ./rt.sh
+ENTRYPOINT ["sh", "./rt.sh"]
